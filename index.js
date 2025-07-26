@@ -14,21 +14,10 @@ const gameRoutes = require('./routes/gameRoutes');
 
 dotenv.config();
 
-const allowedOrigins = [
-    'http://localhost:5173',
-    'https://game-tracker-frontend.netlify.app'
-];
-  
 app.use(cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    origin: 'https://game-tracker-frontend.netlify.app',
     credentials: true
-}));
+  }));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
